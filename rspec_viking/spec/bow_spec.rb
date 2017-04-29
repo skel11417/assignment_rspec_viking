@@ -40,11 +40,12 @@ describe Bow do
       expect(bow.arrows).to equal(9)
     end
     it 'throws an error when arrows <= 0' do
-      dbl = double('doubled_arrows', arrows: 0)
+      # dbl = double('doubled_arrows', arrows: 0)
       # allow(dbl).to receive(:out_of_arrows).and_return(true)
-      bow_0 = Bow.new(0)
+      # bow_0 = Bow.new(0)
       # allow(no_arrows).to receive(:arrows).and_return(0)
-      expect(bow_0.use).to raise("Out of arrows")
+      allow(bow).to receive(:out_of_arrows).and_return(true)
+      expect(bow.use).to raise("Out of arrows")
       bow_0.use
     end
   end
